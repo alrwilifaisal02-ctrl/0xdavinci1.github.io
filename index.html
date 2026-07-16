@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>رسالة</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#000;
+    color:#fff;
+    font-family:Tahoma,sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    overflow:hidden;
+}
+
+#start{
+    text-align:center;
+}
+
+#start h1{
+    font-size:60px;
+}
+
+#start h2{
+    margin-top:20px;
+    font-size:35px;
+}
+
+#terminal{
+    display:none;
+    width:100%;
+    height:100%;
+    color:#00ff00;
+    font-family:Consolas,monospace;
+    padding:20px;
+    font-size:24px;
+    white-space:pre-line;
+}
+</style>
+</head>
+<body>
+
+<div id="start">
+<h1>مرحبًا</h1>
+<h2>عندي رسالة لك...</h2>
+</div>
+
+<div id="terminal"></div>
+
+<script>
+setTimeout(() => {
+
+document.getElementById("start").style.display="none";
+document.getElementById("terminal").style.display="block";
+
+const lines=[
+"> Connecting...",
+"> Loading...",
+"> Reading Files...",
+"> Initializing...",
+"> Access Granted",
+"> Downloading...",
+"> Session Complete"
+];
+
+let i=0;
+
+function write(){
+    if(i<lines.length){
+        document.getElementById("terminal").innerHTML += lines[i] + "<br>";
+        i++;
+        setTimeout(write,700);
+    }
+}
+
+write();
+
+},3000);
+</script>
+
+</body>
+</html>
