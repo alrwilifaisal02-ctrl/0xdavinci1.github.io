@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>رسالة</title>
+
+<style>
+body{
+    margin:0;
+    background:#000;
+    color:#fff;
+    font-family:Tahoma,sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    overflow:hidden;
+}
+
+#msg,#terminal{
+    text-align:center;
+}
+
+#terminal{
+    display:none;
+    color:#00ff00;
+    font-family:Consolas,monospace;
+    font-size:24px;
+    white-space:pre-line;
+}
+</style>
+</head>
+<body>
+
+<div id="msg">
+    <h1>مرحبًا</h1>
+    <h2>عندي رسالة لك...</h2>
+</div>
+
+<div id="terminal"></div>
+
+<script>
+setTimeout(function(){
+    document.getElementById("msg").style.display="none";
+    document.getElementById("terminal").style.display="block";
+
+    const lines=[
+        "> Connecting...",
+        "> Loading...",
+        "> Access Granted",
+        "> Reading Files...",
+        "> Initializing...",
+        "> Session Complete"
+    ];
+
+    let i=0;
+
+    function write(){
+        if(i<lines.length){
+            document.getElementById("terminal").innerHTML+=lines[i]+"<br>";
+            i++;
+            setTimeout(write,800);
+        }
+    }
+
+    write();
+
+},3000);
+</script>
+
+</body>
+</html> 
